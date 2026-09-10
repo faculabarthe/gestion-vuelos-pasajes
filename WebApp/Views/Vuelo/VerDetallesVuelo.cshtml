@@ -1,0 +1,90 @@
+﻿@using Dominio;
+
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9f9f9;
+        padding: 20px;
+    }
+
+    .vuelo-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    }
+
+    thead {
+        background-color: #1976d2;
+        color: white;
+    }
+
+    th, td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .btn-comprar {
+        display: inline-block;
+        padding: 8px 14px;
+        background-color: #43a047;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-comprar:hover {
+        background-color: #2e7d32;
+    }
+
+    .mensaje {
+        color: #666;
+        font-size: 18px;
+        text-align: center;
+        margin-top: 40px;
+    }
+</style>
+
+@if (ViewBag.vuelo != null)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Numero Vuelo</th>
+                <th>Frecuencia</th>
+                <th>Avion</th>
+                <th>Ruta</th>
+                <th>Comprar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@ViewBag.vuelo.NumeroVuelo</td>
+                <td>@string.Join(", ", ViewBag.vuelo.Frecuencias)</td>
+                <td>@ViewBag.vuelo.DevolverAvion()</td>
+                <td>@ViewBag.vuelo.DevolverRuta()</td>
+                <td><a class="btn-comprar" href="/Pasaje/ComprarPasaje?idvuelo=@ViewBag.vuelo.NumeroVuelo">Comprar</a></td>
+            </tr>
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No se encontró el vuelo.</p>
+}

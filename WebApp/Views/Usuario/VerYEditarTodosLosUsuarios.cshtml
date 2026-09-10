@@ -1,0 +1,115 @@
+﻿@using Dominio;
+<style>
+	/* Estilo base para todas las tablas */
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		margin: 20px 0;
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		font-size: 15px;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	}
+
+	thead td {
+		padding: 10px 12px;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	tbody td {
+		padding: 10px 12px;
+		color: #333;
+	}
+
+	tbody tr {
+		border-bottom: 1px solid #ddd;
+		transition: background-color 0.2s ease-in-out;
+	}
+
+		tbody tr:hover {
+			background-color: #f9f9f9;
+		}
+
+	a {
+		text-decoration: none;
+		color: #0066cc;
+		font-weight: bold;
+	}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+	/* Tabla para Premium: azul oscuro */
+	.tabla-premium thead {
+		background-color: #004080;
+		color: white;
+	}
+
+	/* Tabla para Ocacional: verde */
+	.tabla-ocacional thead {
+		background-color: #2e7d32;
+		color: white;
+	}
+</style>
+
+
+@foreach(Usuario u in ViewBag.lista)
+{
+	if(u is Cliente c)
+	{
+		if(c is Premium p)
+		{
+			<table class="tabla-premium">
+		<thead>
+			<tr>
+				<td>DOCUMENTO</td>
+				<td>NOMBRE</td>
+				<td>NACIONALIDAD</td>
+				<td>EMAIL</td>
+				<td>PUNTOS</td>
+				<td>CAMBIAR</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>@p.Documento</td>
+				<td>@p.Nombre</td>
+				<td>@p.Nacionalidad</td>
+				<td>@p.Email</td>
+				<td>@p.Puntos</td>
+				<td><a href="/Usuario/CambiosUsuarioPremium?email=@p.Email">CAMBIAR PUNTOS</a></td>
+			</tr>
+		</tbody>
+	</table>
+	}else 
+	if(c is Ocacional o)
+		{
+			<table class="tabla-ocacional">
+			<thead>
+			<tr>
+				<td>DOCUMENTO</td>
+				<td>NOMBRE</td>
+				<td>NACIONALIDAD</td>
+				<td>EMAIL</td>
+				<td>ELEJIBLE</td>
+				<td>CAMBIAR</td>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td>@o.Documento</td>
+				<td>@o.Nombre</td>
+				<td>@o.Nacionalidad</td>
+				<td>@o.Email</td>
+				<td>@o.Elejible</td>
+				<td><a href="/Usuario/CambiosUsuarioOcacional?email=@o.Email">CAMBIAR</a></td>
+			</tr>
+			</tbody>
+			</table>
+		}
+	}
+
+
+
+}
