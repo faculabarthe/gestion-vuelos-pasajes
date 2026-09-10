@@ -1,0 +1,80 @@
+﻿@using Dominio
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f8;
+        padding: 20px;
+        color: #333;
+    }
+
+    h1 {
+        color: #2c3e50;
+        font-weight: 700;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+    }
+
+    form {
+        background-color: #fff;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        max-width: 350px;
+    }
+
+    label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #34495e;
+    }
+
+    select {
+        width: 100%;
+        padding: 8px 10px;
+        margin-bottom: 15px;
+        border: 1.5px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+    }
+
+        select:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+    input[type="submit"] {
+        background-color: #3498db;
+        color: white;
+        padding: 10px 16px;
+        border: none;
+        border-radius: 5px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+    p {
+        margin-top: 15px;
+        font-style: italic;
+        color: #27ae60; /* Verde para mensajes de éxito */
+    }
+</style>
+<h1>EDITAR USUARIO OCACIONAL</h1>
+<form method="post">
+	<input type="text" hidden name="email" value="@ViewBag.email" />
+
+	<label>ELEJIBLE</label>
+	<select name="elejible">
+		<option value=true>SI</option>
+		<option value=false>NO</option>
+	</select>
+	<input type="submit" value="CAMBIAR" />
+
+</form>
+<p>@ViewBag.Mensaje</p>

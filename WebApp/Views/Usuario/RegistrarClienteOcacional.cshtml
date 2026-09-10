@@ -1,0 +1,79 @@
+﻿@using Dominio;
+@model Ocacional;
+
+<style>
+    form {
+        max-width: 500px;
+        margin: 40px auto;
+        padding: 30px;
+        background-color: #f7f9fc;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        margin-top: 15px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus {
+        border-color: #007BFF;
+        outline: none;
+    }
+
+    button[type="submit"] {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #007BFF;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    p {
+        text-align: center;
+        font-weight: bold;
+        color: green;
+        margin-top: 20px;
+    }
+</style>
+
+
+
+<form method="post">
+    <label>Ingrese Nombre</label>
+    <input type="text" name="Nombre" value=@Model.Nombre />
+    <label>Ingrese Documento</label>
+    <input type="text" name="Documento" value=@Model.Documento />
+    <label>Ingrese Nacionalidad</label>
+    <input type="text" name="Nacionalidad" value=@Model.Nacionalidad />
+    <label>Ingrese Email</label>
+    <input type="text" name="Email" value=@Model.Email />
+    <label>Ingrese Contraseña</label>
+    <input type="text" name="Contrasenia" value=@Model.Contrasenia />
+
+    <button type="submit">Registrarse</button>
+
+</form>
+<p>@ViewBag.Mensaje</p>

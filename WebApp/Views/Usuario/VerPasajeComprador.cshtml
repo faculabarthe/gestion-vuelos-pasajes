@@ -1,0 +1,66 @@
+﻿@using Dominio;
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 16px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    thead {
+        background-color: #004080;
+        color: white;
+        text-align: left;
+    }
+
+        thead td {
+            padding: 12px 15px;
+            font-weight: bold;
+        }
+
+    tbody tr {
+        border-bottom: 1px solid #ddd;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+    tbody td {
+        padding: 12px 15px;
+        color: #333;
+    }
+
+    td {
+        word-break: break-word;
+    }
+</style>
+
+<table>
+	<thead>
+		<tr>
+			<td>Id Pasaje</td>
+			<td>Vuelo</td>
+			<td>Fecha</td>
+            <td>Ruta</td>
+			<td>Equipaje</td>
+			<td>Precio</td>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (Pasaje p in ViewBag.lista)
+		{
+			<tr>	
+				<td>@p.Id</td>
+				<td>@p.DevolverNumeroVuelo()</td>
+				<td>@p.Fecha</td>
+                <td>@p.Vuelo.DevolverRuta()</td>
+				<td>@p.Equipaje</td>
+				<td>@p.CalcularPrecioPasaje()</td>
+			</tr>
+		}
+	</tbody>
+</table>

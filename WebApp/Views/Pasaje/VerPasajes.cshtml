@@ -1,0 +1,74 @@
+﻿@using Dominio;
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #f4f9ff; /* color de fondo de la tabla */
+    }
+
+    th, td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #007acc;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #eaf3fb; /* filas pares */
+    }
+
+    tr:hover {
+        background-color: #d0e7fa; /* al pasar el mouse */
+    }
+
+    h1 {
+        color: #007acc;
+        font-family: Arial, sans-serif;
+    }
+</style>
+
+
+<h1>VER PASAJES</h1>
+
+@if (ViewBag.Mensaje != null)
+{
+    <p style="color:red; font-weight:bold;">@ViewBag.Mensaje</p>
+}
+else if (ViewBag.pasajes != null)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre Pasajero</th>
+                <th>Precio</th>
+                <th>Fecha</th>
+                <th>Ruta</th>
+                <th>Equipaje</th>
+                <th>Email</th>
+                <th>Numero de Vuelo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Pasaje p in ViewBag.pasajes)
+            {
+                <tr>
+                    <td>@p.Id</td>
+                    <td>@p.DevolverNombre()</td>
+                    <td>@p.CalcularPrecioPasaje()</td>
+                    <td>@p.Fecha.ToShortDateString()</td>
+                    <td>@p.Vuelo.DevolverRuta()</td>
+                    <td>@p.Equipaje</td>
+                    <td>@p.DevolverEmail()</td>
+                    <td>@p.DevolverNumeroVuelo()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

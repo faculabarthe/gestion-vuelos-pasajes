@@ -1,0 +1,30 @@
+# Visual Studio
+.vs/
+.vscode/
+
+# Compilación .NET
+bin/
+obj/
+[Bb]in/
+[Oo]bj/
+
+# Archivos de usuario de Visual Studio
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Variables de entorno
+.env
+.env.*
+
+# Archivos temporales
+*.tmp
+*.temp

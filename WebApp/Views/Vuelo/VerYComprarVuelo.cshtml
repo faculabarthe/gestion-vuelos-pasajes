@@ -1,0 +1,96 @@
+﻿@using Dominio;
+
+
+<style>
+
+    .btn-detalles {
+        display: inline-block;
+        padding: 0.4rem 1rem;
+        background-color: #3498db;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-detalles:hover {
+            background-color: #2980b9;
+        }
+
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin-top: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    thead {
+        background-color: #1e90ff;
+        color: white;
+    }
+
+    th, td {
+        padding: 12px 15px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    tbody tr:hover {
+        background-color: #f1f9ff;
+    }
+
+    .btn-comprar {
+        background-color: #28a745;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-comprar:hover {
+            background-color: #218838;
+        }
+
+    td:first-child {
+        font-weight: bold;
+        color: #333;
+    }
+</style>
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Numero Vuelo</th>
+            <th>Frecuencia</th>
+            <th>Avion</th>
+            <th>Ruta</th>
+            <th>Detalles del Vuelo</th>
+            <th>Comprar</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (Vuelo vuelo in ViewBag.listaVuelo)
+        {
+            <tr>
+                <td>@vuelo.NumeroVuelo</td>
+                <td>@string.Join(", ", vuelo.Frecuencias)</td>
+                <td>@vuelo.DevolverAvion()</td>
+                <td>@vuelo.DevolverRuta()</td>
+                <td><a class="btn-detalles" href="/Vuelo/VerDetallesVuelo?idVuelo=@vuelo.NumeroVuelo">DetallesVuelo</a></td>
+                <td><a href="/Pasaje/ComprarPasaje?idVuelo=@vuelo.NumeroVuelo" class="btn-comprar">Comprar</a></td>
+            </tr>
+
+
+        }
+    </tbody>
+</table>
+    

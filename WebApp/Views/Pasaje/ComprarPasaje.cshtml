@@ -1,0 +1,84 @@
+﻿@using Dominio;
+@model DateTime
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f0f4f8;
+        color: #333;
+        padding: 2rem;
+    }
+
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 2rem;
+    }
+
+    form {
+        max-width: 500px;
+        margin: auto;
+        background: #fff;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+        display: block;
+        margin-top: 1rem;
+        margin-bottom: 0.3rem;
+        font-weight: 600;
+    }
+
+    input[type="date"],
+    select {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+
+    input[type="submit"] {
+        background-color: #3498db;
+        color: white;
+        padding: 0.7rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+        display: block;
+        margin: auto;
+        margin-top: 1rem;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #2980b9;
+    }
+</style>
+<h1>Comprar Pasaje</h1>
+
+<form method="post">
+
+	<!-- Ahora usamos ViewBag.IdVuelo para poner el valor -->
+    <input type="text" hidden name="idVuelo" value="@ViewBag.IdVuelo" />
+
+	<label>Ingrese fecha</label>
+	<input type="date" name="fecha" value=@Model/>
+	<br />
+	<label>Seleccionar Equipaje:</label>
+	<select name="equipaje">
+		<option value="@Equipaje.CABINA">Cabina</option>
+		<option value="@Equipaje.LIGHT">Light</option>
+		<option value="@Equipaje.BODEGA">Bodega</option>
+	</select>
+	<br />
+	<input type="submit" value="Comprar" />
+</form>
+<p>@ViewBag.Mensaje</p>
+
+
+
+
+
